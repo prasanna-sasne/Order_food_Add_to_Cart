@@ -1,0 +1,72 @@
+<block-ui>
+<div class="category-container shadow-lg p-3 mb-5 bg-white rounded border-top">
+  <div class="row">
+    <div class="col category">
+      <div class="card">
+        <div class="card-header" style="background-color: #ffc107;">
+          All
+        </div>
+        <div class="card-body category-list" *ngIf="menuItems.length > 0">
+          <div class="row pointer" *ngFor="let menuCategory of menuItems" (click)="goToSelectedCat(menuCategory.category)">
+            {{ menuCategory.category }}
+            <hr />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 categoryItemsContainer">
+      <div *ngFor="let menu of menuItems">
+        <div class="row categoryItems" [id]="getId(menu.category)">
+          {{ menu.category }}
+        </div>
+        <div class="cat-child-selection">
+           <div class="row category-content" *ngFor="let item of menu.catDescription" [ngClass]="item.available ? '': 'disableDiv'">
+            <div class="col">
+                <div [ngClass]="item.vegflag === 'nonveg' ? 'vegFlag' : 'nonVegFlag'" aria-hidden="true"></div>
+                <div style="margin-left: 8%;margin-top: -6%;"> 
+                  {{ item.name }}
+                </div>
+                <div *ngIf="item.description != ''" class="itemDescription">
+                    {{ item.description }}  
+                  </div>
+            </div>
+            <div class="col-md-auto" *ngIf="item.available">
+              <span (click)="removeFromCart(item)"><i class="fa fa-minus-square-o pointer" aria-hidden="true"></i></span>
+              <span style="padding: 0px 6px 0px 6px;"> {{ item.quantity }}</span>
+              <span (click)="addToCart(item)"><i class="fa fa-plus-square-o pointer" aria-hidden="true"></i></span>
+            </div>
+            <div class="col col-lg-2">
+              {{ item.price | currency:"₹"}}
+            </div>
+            <hr />
+           </div> 
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-header flex-cart" style="background-color: #ffc107;">
+          <span>Your Cart</span>
+          <span (click)="clearCart()"><i class="fa fa-trash pointer" aria-hidden="true"></i></span>
+        </div>
+        <div class="card-block" *ngIf="groups.length > 0">
+          <div class="row" *ngFor="let item of groups" style="font-size: 11px;">
+              <div class="col-sm">{{ item.itemName }}</div>
+              <div class="col-sm">x <span>{{ item.itemDescription.length }}</span></div>
+              <div class="col-sm">{{ item.price | currency:"₹" }}</div>
+            <hr />
+          </div>
+          <div class="flex-cart">
+             <span>Total: </span>
+             <span>{{ totalToBePaid | currency:"₹" }}</span> 
+          </div>
+          <a href="#" class="btn btn-warning btn-block" [routerLink]="['/orderPlaced']">CHECKOUT</a>
+        </div>
+        <div class="card-body" *ngIf="groups.length == 0">
+            Your Cart is Empty
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+</block-ui>

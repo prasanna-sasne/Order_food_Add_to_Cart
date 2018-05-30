@@ -1,0 +1,71 @@
+/* You can add global styles to this file, and also import other style files */
+.category-container{
+    margin-top: 1%;   
+}
+
+hr {
+    width: 96%;
+}
+
+.flex-cart{
+    justify-content: space-between;
+    display: flex;
+    margin-bottom: 5%;
+}
+
+.categoryItems{
+    background-color: #ffc107;
+    height: 2rem;
+    justify-content: center;
+    padding-top: 1%;
+    border-radius: 5px;
+}
+
+.category-container .col-6.categoryItemsContainer{
+    max-height: 32rem;
+    overflow-y: auto;
+}
+
+.category-content{
+  background-color: #f7f4f4;
+}
+
+div.cat-child-selection > div:first-child{
+    padding-top: 3%;
+}
+
+div.category-list > div:first-child{
+
+}
+
+.vegFlag{
+   background-color: red;
+   height: 16px;
+   width: 16px;
+}
+
+.nonVegFlag{
+   background-color: green;
+   height: 16px;
+   width: 16px;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.itemDescription{
+    font-size: 10px;
+    word-break: break-word;
+    margin-left: 8%;
+
+}
+.disableDiv{
+    opacity: 0.5;
+}
+
+.card-block{
+    padding: 5%;
+    max-height: 28rem;
+    overflow-y: auto;
+}
