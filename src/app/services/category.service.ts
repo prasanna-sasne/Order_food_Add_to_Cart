@@ -9,7 +9,7 @@ export class CategoryService {
   constructor(private http: Http) { }
 
   public getOrderListMenuItems() {
-    return this.http.get(`https://thesmartq.firebaseio.com/menu.json`)
+    return this.http.get(`http://localhost:4201/assets/menu.json`)
       .map((response: Response) => {
         const menuItems = response.json();
         var group_to_values = menuItems.reduce(function (obj, item) {
